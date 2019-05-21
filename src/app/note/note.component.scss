@@ -19,6 +19,7 @@ $card-font-family: Cursive, Arial;
   background-color: $card-background-color;
   width: $card-width;
   display: inline-block; // @todo default flex display causes conflicts.
+  vertical-align: top;
   margin: $card-gutter; // @todo Grid or other CSS library variable...
 
   &__header {
