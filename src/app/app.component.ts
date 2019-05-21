@@ -19,12 +19,10 @@ export class AppComponent {
     let notes = document.querySelectorAll('app-note');
 
     notes.forEach((note, index)=> {
-      //console.log(note.querySelector('.content').innerHTML);
       this.notes[note.id].content = note.querySelector('.content').innerHTML;
     });
 
     localStorage.setItem('notes', JSON.stringify(this.notes));
-    console.log("********* updateAllNotes *********");
   }
 
   addNote() {
@@ -34,7 +32,6 @@ export class AppComponent {
       return b.id - a.id;
     });
     localStorage.setItem('notes', JSON.stringify(this.notes));
-    console.log("********* addNote *********");
   };
 
   saveNote(event) {
@@ -47,7 +44,6 @@ export class AppComponent {
     }
     this.updateNote(json);
     localStorage.setItem('notes', JSON.stringify(this.notes));
-    console.log("********* saveNote *********");
   }
 
   updateNote(newValue) {
@@ -56,8 +52,6 @@ export class AppComponent {
         this.notes[index].content = newValue.content;
       }
     });
-
-    console.log("********* updateNote *********");
   }
 
   deleteNote(event) {
@@ -75,7 +69,6 @@ export class AppComponent {
   clearNotes() {
     // @todo This doesn't update the view properly until refresh.
     localStorage.clear();
-    console.log("********* clearNotes *********");
   }
 }
 

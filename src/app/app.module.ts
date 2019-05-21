@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // TODO Can this be combined with previous line?
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // @todo Can this be combined with previous line?
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material';
 

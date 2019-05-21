@@ -12,10 +12,9 @@ export class NoteComponent implements OnInit {
   @Output() focusout = new EventEmitter();
   noteLength;
 
-  constructor(private el:ElementRef) {}
+  constructor() {}
 
   ngOnInit() {}
-
 
   ngAfterViewInit() {}
 
@@ -30,7 +29,7 @@ export class NoteComponent implements OnInit {
 
   charCount(event) {
     // @todo Consider implementing this as a warning popup in onBlur event.
-    // @todo This line trucates but also moves cursor to beginning of the field. Not UX friendly.
+    // @todo This line truncates but also moves cursor to beginning of the field. Not UX friendly.
     //event.target.innerText = event.target.innerText.substring(0, 200);
     this.noteLength = event.target.innerText.length;
   }
