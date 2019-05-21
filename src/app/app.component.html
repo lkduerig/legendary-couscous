@@ -1,12 +1,13 @@
 <div class="app">
+  <!-- TODO Draggable. From angular. -->
 	<app-note *ngFor="let note of notes" (dismiss)="deleteNote($event)" (focusout)="saveNote($event)" id="{{note.id}}">{{note.content}}</app-note>
 </div>
+
 <div  class="toolbar" id="toolbar" tabindex="0">
 	<button class="add material-icons" (click)="addNote()" >
   note_add
 	</button>
-  <!-- <button (click) = "updateAllNotes()">Click</button> -->
-  <!-- <button class="record material-icons" (click)="record($event)">
-    settings_voice
-  </button> -->
+  <button class="delete_sweep material-icons" (click)="clearNotes()" >
+    delete_sweep
+  </button>
 </div>

@@ -1,0 +1,41 @@
+// @todo - Most of these styles should be done with a library. - note for interview.
+
+$card-width: 250px;
+$card-gutter: 1rem;
+
+// @todo Everything.
+
+:host {
+  // Card wrapper styles here.
+}
+
+// @todo use a library or something for this. Angular Material currently in use, but Foundation or Compass might be good for overall.
+.card {
+
+  background-color: #ebe3a8;
+  width: $card-width;
+  display: inline-block; // @todo default flex display causes conflicts.
+  margin: $card-gutter; // @todo Grid or other CSS library variable...
+
+  &__header {
+    justify-content: space-between;
+  }
+
+  &__content {
+    // @todo Find a better font.
+    font-family: Cursive, Arial;
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 80%;
+  }
+
+}
+
+.invalid {
+  // TODO This should be in a common component.
+  color: red;
+}
+

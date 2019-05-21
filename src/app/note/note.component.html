@@ -1,12 +1,15 @@
-<div class="note">
-  <div class="note_toolbar">
-	  <span class="close material-icons" (click)="onDismiss($event)">close</span>
-  </div>
-	<div class="content" contenteditable="true" (blur)="onFocusOut($event)">
-		<ng-content></ng-content>
-	</div>
-	<!-- TODO Commented out as only works on Chrome. -->
-  <!-- <div class="footer">
-	  <button class="material-icons" (click)="record($event)">settings_voice</button>
-  </div> -->
-</div>
+<mat-card class="card">
+
+  <mat-card-header class="card__header">
+    <span class="close material-icons" (click)="onDismiss($event)">close</span>
+  </mat-card-header>
+
+  <!-- @todo keyup and blur cause a double event which prevents editing a card until hitting tab or so. -->
+  <mat-card-content  class="content card__content" (keyup)="charCount($event)" contenteditable="true" (blur)="onFocusOut($event)">
+    <ng-content></ng-content>
+  </mat-card-content>
+
+  <!-- TODO This limit should be a variable. Easy fix later. -->
+  <div class="card__counter" [ngClass]="{'invalid': noteLength > 200}">{{ noteLength ? noteLength + ' / ' : 'Max: ' }} 200</div>
+
+</mat-card>

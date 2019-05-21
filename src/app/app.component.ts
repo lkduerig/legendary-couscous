@@ -3,86 +3,79 @@ import { Component, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ],
+  styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   notes = [];
   recognition:any;
-  constructor(private el:ElementRef) {
-    this.notes = JSON.parse(localStorage.getItem('notes')) || [{ id: 0,content:'' }];
 
-    // TODO Commented out, only works on Chrome.
-    // const {webkitSpeechRecognition} : IWindow = <IWindow>window;
-    // this.recognition = new webkitSpeechRecognition();
-    // this.recognition.onresult = (event)=> {
-    //   console.log(this.el.nativeElement.querySelectorAll(".content")[0]);
-    //   this.el.nativeElement.querySelectorAll(".content")[0].innerText = event.results[0][0].transcript
-      
-    // };
+  constructor(private el:ElementRef) {
+    this.notes = JSON.parse(localStorage.getItem('notes')) || [{id: 0, content: ''}];
   }
+
+  // @todo This seems useless.
   updateAllNotes() {
-    console.log(document.querySelectorAll('app-note'));
     let notes = document.querySelectorAll('app-note');
 
-    notes.forEach((note, index)=>{
-         console.log(note.querySelector('.content').innerHTML)
-         this.notes[note.id].content = note.querySelector('.content').innerHTML;
+    notes.forEach((note, index)=> {
+      //console.log(note.querySelector('.content').innerHTML);
+      this.notes[note.id].content = note.querySelector('.content').innerHTML;
     });
 
     localStorage.setItem('notes', JSON.stringify(this.notes));
-
+    console.log("********* updateAllNotes *********");
   }
 
-  addNote () {
-    this.notes.push({ id: this.notes.length + 1,content:'' });
-    // sort the array
-    this.notes= this.notes.sort((a,b)=>{ return b.id-a.id});
+  addNote() {
+    this.notes.push({id: this.notes.length + 1, content: ''});
+    // Sort the array.
+    this.notes = this.notes.sort((a, b)=> {
+      return b.id - a.id;
+    });
     localStorage.setItem('notes', JSON.stringify(this.notes));
+    console.log("********* addNote *********");
   };
-  
-  saveNote(event){
+
+  saveNote(event) {
     const id = event.srcElement.parentElement.parentElement.getAttribute('id');
     const content = event.target.innerText;
     event.target.innerText = content;
     const json = {
-      'id':id,
-      'content':content
+      'id': id,
+      'content': content
     }
     this.updateNote(json);
     localStorage.setItem('notes', JSON.stringify(this.notes));
-    console.log("********* updating note *********")
+    console.log("********* saveNote *********");
   }
-  
-  updateNote(newValue){
-    this.notes.forEach((note, index)=>{
-      if(note.id== newValue.id) {
+
+  updateNote(newValue) {
+    this.notes.forEach((note, index)=> {
+      if (note.id == newValue.id) {
         this.notes[index].content = newValue.content;
       }
     });
+
+    console.log("********* updateNote *********");
   }
-  
-  deleteNote(event){
-     const id = event.srcElement.parentElement.parentElement.parentElement.getAttribute('id');
-     this.notes.forEach((note, index)=>{
-      if(note.id== id) {
-        this.notes.splice(index,1);
+
+  deleteNote(event) {
+    const id = event.srcElement.parentElement.parentElement.parentElement.getAttribute('id');
+    this.notes.forEach((note, index)=> {
+      if (note.id == id) {
+        this.notes.splice(index, 1);
         localStorage.setItem('notes', JSON.stringify(this.notes));
-        console.log("********* deleting note *********")
+        console.log("********* deleteNote *********");
         return;
       }
     });
   }
 
-   record(event) {
-    this.recognition.start();
-    this.addNote();
+  clearNotes() {
+    // @todo This doesn't update the view properly until refresh.
+    localStorage.clear();
+    console.log("********* clearNotes *********");
   }
-
-
 }
 
-
-export interface IWindow extends Window {
-  webkitSpeechRecognition: any;
-}

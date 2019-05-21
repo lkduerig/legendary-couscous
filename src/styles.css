@@ -1,7 +1,10 @@
+/*@import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';*/
+
 /* Styles go here */
 
 * {
     box-sizing: border-box;
+  background-color: green !important;
 }
 
 .app app-note {

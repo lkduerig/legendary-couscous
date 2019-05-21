@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'; // TODO Can this be combined with previous line?
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // TODO Can this be combined with previous line?
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { NoteComponent } from './note/note.component';
 
 @NgModule({
-  imports:      [ BrowserModule, NoopAnimationsModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, NoteComponent ],
+  imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule, MatCardModule ],
+  declarations: [ AppComponent, NoteComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

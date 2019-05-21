@@ -1,45 +1,38 @@
-import {Component, HostBinding, EventEmitter, Output, ElementRef} from '@angular/core'
-//declare var webkitSpeechRecognition:any;
-//declare var SpeechRecognition:any;
+// @todo Clean out unneeded imports.
+import {Component, OnInit, AfterViewInit, HostBinding, EventEmitter, ViewChild, Output, ElementRef, ChangeDetectorRef} from '@angular/core';
+
 @Component({
   selector:'app-note',
   templateUrl:'./note.component.html',
-  styleUrls:['./note.component.css']
+  styleUrls:['./note.component.scss']
 })
 
-export class NoteComponent {
-  //SpeechRecognition:any =webkitSpeechRecognition;
-  
-  recognition:any;
-
+export class NoteComponent implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
-  constructor(private el:ElementRef) {
+  noteLength;
 
-    // TODO Commented out, only works on Chrome.
-  //  const {webkitSpeechRecognition} : IWindow = <IWindow>window;
-  //   this.recognition = new webkitSpeechRecognition();
-  //   this.recognition.onresult = (event)=> {
-  //     this.el.nativeElement.querySelector(".content").innerText += event.results[0][0].transcript
-  //     console.log(event.results[0][0].transcript) 
-  //     document.getElementById('toolbar').focus();
-  //   };
-  }
-  
+  constructor(private el:ElementRef) {}
+
+  ngOnInit() {}
+
+
+  ngAfterViewInit() {}
+
   onDismiss(event){
     this.dismiss.emit(event);
   }
-  
+
   onFocusOut(event){
-    this.focusout.emit(event)
+    // @todo Changes not saved if refreshing without changing focus.
+    this.focusout.emit(event);
   }
 
-  record(event) {
-    this.recognition.start();
+  charCount(event) {
+    // @todo Consider implementing this as a warning popup in onBlur event.
+    // @todo This line trucates but also moves cursor to beginning of the field. Not UX friendly.
+    //event.target.innerText = event.target.innerText.substring(0, 200);
+    this.noteLength = event.target.innerText.length;
   }
 
-}
-
-export interface IWindow extends Window {
-  webkitSpeechRecognition: any;
 }
