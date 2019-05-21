@@ -1,7 +1,11 @@
-// @todo - Most of these styles should be done with a library. - note for interview.
+// @todo - Most of these styles should be done with a library.
+
+@import "../variables";
 
 $card-width: 250px;
-$card-gutter: 1rem;
+$card-gutter: $global-margin;
+$card-background-color: #ebe3a8;
+$card-font-family: Cursive, Arial;
 
 // @todo Everything.
 
@@ -12,7 +16,7 @@ $card-gutter: 1rem;
 // @todo use a library or something for this. Angular Material currently in use, but Foundation or Compass might be good for overall.
 .card {
 
-  background-color: #ebe3a8;
+  background-color: $card-background-color;
   width: $card-width;
   display: inline-block; // @todo default flex display causes conflicts.
   margin: $card-gutter; // @todo Grid or other CSS library variable...
@@ -23,7 +27,7 @@ $card-gutter: 1rem;
 
   &__content {
     // @todo Find a better font.
-    font-family: Cursive, Arial;
+    font-family: $card-font-family;
   }
 
   &__counter {
@@ -36,6 +40,6 @@ $card-gutter: 1rem;
 
 .invalid {
   // TODO This should be in a common component.
-  color: red;
+  color: $error-color;
 }
 

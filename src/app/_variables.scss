@@ -1,2 +1,16 @@
 // @todo Disclaimer: This is not the way I normally do this. Most of this is the shame.scss partial (worth explaining,
 // shame.scss is a good practice), but since we don't have a CSS framework, I put it just here.
+
+
+$global-margin: 1rem;
+
+// Grid. (Which @todo could be implemented, for now, just separating some variables.)
+$gutter: $global-margin;
+
+// Typography.
+$base-font-family: Arial;
+//$global-lineheight: 1.4rem;
+
+// Colors.
+$main-color: gold;
+$error-color: red;
