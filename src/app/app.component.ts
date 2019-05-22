@@ -60,15 +60,14 @@ export class AppComponent {
       if (note.id == id) {
         this.notes.splice(index, 1);
         localStorage.setItem('notes', JSON.stringify(this.notes));
-        console.log("********* deleteNote *********");
         return;
       }
     });
   }
 
   clearNotes() {
-    // @todo This doesn't update the view properly until refresh.
     localStorage.clear();
+    window.location.reload();
   }
 }
 
