@@ -1,0 +1,30 @@
+// Styles for footer toolbar.
+
+$toolbar-height: 3rem;
+$toolbar-color: $gray-color;
+$toolbar-background: $accent-color;
+$toolbar-border: 1rem solid $toolbar-color;
+$toolbar-icon-size: 2rem;
+
+.toolbar {
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: $toolbar-height;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  background-color: $toolbar-background;
+  border-top: $toolbar-border;
+  color: $toolbar-color;
+  font-weight: bold;
+
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: $global-margin / 2;
+    font-size: $toolbar-icon-size;
+    outline: none;
+  }
+}

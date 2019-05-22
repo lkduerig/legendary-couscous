@@ -1,37 +1,9 @@
 @import 'variables';
+@import 'toolbar';
+@import 'forms';
 
 .app {
-  font-family: Arial;
-}
-
-// @todo Refactor this. Get rid of it. Burn it. Variables. Abolish the px. Just no.
-
-.app {
+  font-family: $base-font-family;
   overflow: auto;
-  margin-bottom: 50px;
-}
-
-.toolbar {
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 55px;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  background-color: $main-color;
-  border: 10px solid gray;
-  border-bottom: 0;
-  color: gray;
-  font-size: -webkit-xxx-large;
-  font-weight: bold;
-}
-
-button {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 10px;
-  font-size: xx-large;
-  outline: none;
+  margin-bottom: $toolbar-height + $global-margin; // Make room for the toolbar.
 }
