@@ -2,6 +2,7 @@
 // @todo - Most of these styles should be done with a library.
 
 @import "../variables";
+@import '../forms';
 
 $card-width: 250px;
 $card-gutter: $global-margin;
@@ -34,5 +35,3 @@ $card-font-family: Cursive, Arial;
     font-size: 80%;
   }
 }
-
-
